@@ -12,7 +12,13 @@
         "strict": true,
         "noUnusedLocals": true,
         "outDir": "./backend-dist/",
+        "experimentalDecorators": true,
+        "allowJs": true
+
     },
+    "exclude": [
+        "node_modules"
+    ],
     "include": [
         "./backend/*.ts"
     ]
