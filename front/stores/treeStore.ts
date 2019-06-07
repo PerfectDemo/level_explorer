@@ -8,7 +8,7 @@ export default class TreeStore implements Tree {
         },
         {
             name: 'db2',
-            keys: [ 'key1', 'key2' ],
+            keys: [ 'key3', 'key4' ],
         },
     ];
 

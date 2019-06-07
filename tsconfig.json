@@ -20,6 +20,7 @@
         "node_modules"
     ],
     "include": [
-        "./backend/*.ts"
+        "./backend/*.ts",
+        "./common/*.ts"
     ]
 }

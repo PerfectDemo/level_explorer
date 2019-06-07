@@ -6,7 +6,8 @@
   "scripts": {
     "start": "parcel front/index.html -p 8080",
     "build-backend": "tsc",
-    "run-backend": "node ./backend-dist/main.js",
+    "dev": "node scripts/dev.js",
+    "run": "tsc && node ./backend-dist/main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -33,6 +34,7 @@
     "@types/react": "^16.8.18",
     "@types/react-dom": "^16.8.4",
     "less": "^3.9.0",
+    "nodemon": "^1.19.1",
     "parcel-bundler": "^1.12.3",
     "parcel-plugin-less-js-enabled": "^1.0.2",
     "tslint": "^5.16.0",
