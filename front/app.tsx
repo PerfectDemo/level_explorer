@@ -4,6 +4,7 @@ import './index.less';
 import Siderbar from './components/Siderbar';
 import MyContent from './components/MyContent';
 import { Provider } from 'mobx-react';
+import './remote';
 
 import stores from './stores';
 
@@ -11,6 +12,13 @@ export default class Application extends React.Component {
     state = {
         collapsed: false,
     };
+
+    componentDidMount() {
+        window.getAllDb().then(item => {
+            console.log('wryyyyyyyy');
+            console.log(item);
+        });
+    }
 
     onCollapse = (collapsed: boolean) => {
         console.log(collapsed);

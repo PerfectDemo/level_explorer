@@ -48,7 +48,7 @@ export default class Siderbar extends React.Component<IProps> {
                                 {
                                     item.keys.map((key, index) => {
                                         return (
-                                            <Menu.Item onClick={async () => alert( await window.random())}key={ i * 10 + index }>{key}</Menu.Item>
+                                            <Menu.Item key={ i * 10 + index }>{key}</Menu.Item>
                                         );
                                     })
                                 }

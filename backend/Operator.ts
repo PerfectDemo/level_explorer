@@ -1,4 +1,8 @@
 import IRemote, { DbInfo } from '../common/remote';
+import LocalDb from './LocalDb';
+
+const localdb = new LocalDb();
+
 class Operator implements IRemote {
 
     [key: string]: any;
@@ -7,6 +11,8 @@ class Operator implements IRemote {
 
     constructor() {
         this.level = null;
+      
+        console.log(233333);
     }
 
     async get(key: string) {
@@ -17,12 +23,13 @@ class Operator implements IRemote {
 
     }
 
-    async getAllDb(): Promise<string[]> {
-        return [];
+    async getAllDb(): Promise<DbInfo[]> {
+        console.log(this);
+        return localdb.getAllDb();
     }
 
-    async getDbInfo(): Promise<DbInfo> {
-        return { name: "1", location: "2" };
+    async getDbInfo(name: string): Promise<DbInfo> {
+        return localdb.getDbInfo(name);
     }
 
     async open() {

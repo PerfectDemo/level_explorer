@@ -3,7 +3,7 @@ const exec = require('child_process').execSync;
 
 nodemon({
     watch: "./backend/*",
-    script: "./backend-dist/main.js",
+    script: "./backend-dist/backend/main.js",
     ext: "ts"
 });
 
