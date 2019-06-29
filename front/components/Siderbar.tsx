@@ -16,6 +16,10 @@ interface IProps {
 @observer
 export default class Siderbar extends React.Component<IProps> {
 
+    componentDidMount() {
+        this.props.tree.fetchItems();
+    }
+
     getDBnames() {
         return (
             <Select defaultValue={"全部"}>
@@ -46,11 +50,11 @@ export default class Siderbar extends React.Component<IProps> {
                                 }
                             >
                                 {
-                                    item.keys.map((key, index) => {
+                                    item.keys ? item.keys.map((key, index) => {
                                         return (
                                             <Menu.Item key={ i * 10 + index }>{key}</Menu.Item>
                                         );
-                                    })
+                                    }) : null
                                 }
                             </SubMenu>
                         );

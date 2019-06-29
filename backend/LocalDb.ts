@@ -9,21 +9,18 @@ const dbFile = 'levelex.json';
 
 const adapter = new FileSync(path.join(homeDir, dbFile));
 
-
-
-
 class LocalDb {
-    public db: lowdb.LowdbAsync<lowdb.AdapterAsync> | any = null;
+    public db: any;
     constructor() {
+        this.db = lowdb(adapter);
         this.init();
     }
 
     init() {
-        this.db = lowdb(adapter);
         this.db.defaults({ dbs: [] }).write();
     }
 
-    getDbInfo(name: string): any {
+    getDbInfo(name: string): DbInfo | undefined {
         const dbs: DbInfo[] = this.getAllDb();
         return dbs.find(item => item.name === name);
     }

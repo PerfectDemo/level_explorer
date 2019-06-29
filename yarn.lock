@@ -693,12 +693,32 @@
     "@parcel/utils" "^1.11.0"
     physical-cpu-count "^2.0.0"
 
+"@types/abstract-leveldown@*":
+  version "5.0.1"
+  resolved "https://registry.npm.taobao.org/@types/abstract-leveldown/download/@types/abstract-leveldown-5.0.1.tgz#3c7750d0186b954c7f2d2f6acc8c3c7ba0c3412e"
+  integrity sha1-PHdQ0BhrlUx/LS9qzIw8e6DDQS4=
+
 "@types/carlo@^0.9.0":
   version "0.9.0"
   resolved "https://registry.npm.taobao.org/@types/carlo/download/@types/carlo-0.9.0.tgz#8640cee47fa5b3af43c5e60f118d4c657b61b361"
   dependencies:
     "@types/node" "*"
     "@types/puppeteer-core" "*"
+
+"@types/level-js@^4.0.1":
+  version "4.0.1"
+  resolved "https://registry.npm.taobao.org/@types/level-js/download/@types/level-js-4.0.1.tgz#e094b684e546b80346b2cec0562c4216d8d29eeb"
+  integrity sha1-4JS2hOVGuANGss7AVixCFtjSnus=
+  dependencies:
+    "@types/abstract-leveldown" "*"
+
+"@types/levelup@^3.1.1":
+  version "3.1.1"
+  resolved "https://registry.npm.taobao.org/@types/levelup/download/@types/levelup-3.1.1.tgz#f7cc08f248f14cb6c92914e91bceb8761020e8f0"
+  integrity sha1-98wI8kjxTLbJKRTpG864dhAg6PA=
+  dependencies:
+    "@types/abstract-leveldown" "*"
+    "@types/node" "*"
 
 "@types/lodash@*", "@types/lodash@^4.14.134":
   version "4.14.134"
@@ -762,6 +782,14 @@ abab@^2.0.0:
 abbrev@1:
   version "1.1.1"
   resolved "https://registry.npm.taobao.org/abbrev/download/abbrev-1.1.1.tgz#f8f2c887ad10bf67f634f005b6987fed3179aac8"
+
+abstract-leveldown@~6.0.0, abstract-leveldown@~6.0.1:
+  version "6.0.3"
+  resolved "https://registry.npm.taobao.org/abstract-leveldown/download/abstract-leveldown-6.0.3.tgz#b4b6159343c74b0c5197b2817854782d8f748c4a"
+  integrity sha1-tLYVk0PHSwxRl7KBeFR4LY90jEo=
+  dependencies:
+    level-concat-iterator "~2.0.0"
+    xtend "~4.0.0"
 
 acorn-globals@^4.1.0:
   version "4.3.2"
@@ -1848,6 +1876,14 @@ defaults@^1.0.3:
   dependencies:
     clone "^1.0.2"
 
+deferred-leveldown@~5.1.0:
+  version "5.1.0"
+  resolved "https://registry.npm.taobao.org/deferred-leveldown/download/deferred-leveldown-5.1.0.tgz#c21e40641a8e48530255a4ad31371cc7fe76b332"
+  integrity sha1-wh5AZBqOSFMCVaStMTccx/52szI=
+  dependencies:
+    abstract-leveldown "~6.0.0"
+    inherits "^2.0.3"
+
 define-properties@^1.1.2, define-properties@^1.1.3:
   version "1.1.3"
   resolved "https://registry.npm.taobao.org/define-properties/download/define-properties-1.1.3.tgz#cf88da6cbee26fe6db7094f61d870cbd84cee9f1"
@@ -2058,9 +2094,10 @@ entities@^1.1.1:
   version "1.1.2"
   resolved "https://registry.npm.taobao.org/entities/download/entities-1.1.2.tgz#bdfa735299664dfafd34529ed4f8522a275fea56"
 
-errno@^0.1.1:
+errno@^0.1.1, errno@~0.1.1:
   version "0.1.7"
   resolved "https://registry.npm.taobao.org/errno/download/errno-0.1.7.tgz#4684d71779ad39af177e3f007996f7c67c852618"
+  integrity sha1-RoTXF3mtOa8Xfj8AeZb3xnyFJhg=
   dependencies:
     prr "~1.0.1"
 
@@ -2666,6 +2703,11 @@ image-size@~0.5.0:
   version "0.5.5"
   resolved "https://registry.npm.taobao.org/image-size/download/image-size-0.5.5.tgz#09dfd4ab9d20e29eb1c3e80b8990378df9e3cb9c"
 
+immediate@~3.2.3:
+  version "3.2.3"
+  resolved "https://registry.npm.taobao.org/immediate/download/immediate-3.2.3.tgz#d140fa8f614659bd6541233097ddaac25cdd991c"
+  integrity sha1-0UD6j2FGWb1lQSMwl92qwlzdmRw=
+
 immutable@^3.7.4:
   version "3.8.2"
   resolved "https://registry.npm.taobao.org/immutable/download/immutable-3.8.2.tgz#c2439951455bb39913daf281376f1530e104adf3"
@@ -2935,9 +2977,10 @@ is-symbol@^1.0.2:
   dependencies:
     has-symbols "^1.0.0"
 
-is-typedarray@~1.0.0:
+is-typedarray@^1.0.0, is-typedarray@~1.0.0:
   version "1.0.0"
   resolved "https://registry.npm.taobao.org/is-typedarray/download/is-typedarray-1.0.0.tgz#e479c80858df0c1b11ddda6940f96011fcda4a9a"
+  integrity sha1-5HnICFjfDBsR3dppQPlgEfzaSpo=
 
 is-url@^1.2.2:
   version "1.2.4"
@@ -3145,6 +3188,48 @@ less@^3.9.0:
     request "^2.83.0"
     source-map "~0.6.0"
 
+level-concat-iterator@~2.0.0:
+  version "2.0.1"
+  resolved "https://registry.npm.taobao.org/level-concat-iterator/download/level-concat-iterator-2.0.1.tgz#1d1009cf108340252cb38c51f9727311193e6263"
+  integrity sha1-HRAJzxCDQCUss4xR+XJzERk+YmM=
+
+level-errors@~2.0.0:
+  version "2.0.1"
+  resolved "https://registry.npm.taobao.org/level-errors/download/level-errors-2.0.1.tgz#2132a677bf4e679ce029f517c2f17432800c05c8"
+  integrity sha1-ITKmd79OZ5zgKfUXwvF0MoAMBcg=
+  dependencies:
+    errno "~0.1.1"
+
+level-iterator-stream@~4.0.0:
+  version "4.0.1"
+  resolved "https://registry.npm.taobao.org/level-iterator-stream/download/level-iterator-stream-4.0.1.tgz#65c467070c0788fe0d08a0c1ed600c3b9e82bc8d"
+  integrity sha1-ZcRnBwwHiP4NCKDB7WAMO56CvI0=
+  dependencies:
+    inherits "^2.0.1"
+    readable-stream "^3.0.2"
+    xtend "^4.0.0"
+
+level-js@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.npm.taobao.org/level-js/download/level-js-4.0.1.tgz#3bad57d8bb46ebba7b13bc7442b56f4b45c8a2e0"
+  integrity sha1-O61X2LtG67p7E7x0QrVvS0XIouA=
+  dependencies:
+    abstract-leveldown "~6.0.1"
+    immediate "~3.2.3"
+    inherits "^2.0.3"
+    ltgt "^2.1.2"
+    typedarray-to-buffer "~3.1.5"
+
+levelup@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.npm.taobao.org/levelup/download/levelup-4.1.0.tgz#49ab5d3a341731cd102f91c6bc17a1acb1969a17"
+  integrity sha1-SatdOjQXMc0QL5HGvBehrLGWmhc=
+  dependencies:
+    deferred-leveldown "~5.1.0"
+    level-errors "~2.0.0"
+    level-iterator-stream "~4.0.0"
+    xtend "~4.0.0"
+
 levn@~0.3.0:
   version "0.3.0"
   resolved "https://registry.npm.taobao.org/levn/download/levn-0.3.0.tgz#3b09924edf9f083c0490fdd4c0bc4421e04764ee"
@@ -3234,6 +3319,11 @@ lru-cache@^4.0.1, lru-cache@^4.1.5:
   dependencies:
     pseudomap "^1.0.2"
     yallist "^2.1.2"
+
+ltgt@^2.1.2:
+  version "2.2.1"
+  resolved "https://registry.npm.taobao.org/ltgt/download/ltgt-2.2.1.tgz#f35ca91c493f7b73da0e07495304f17b31f87ee5"
+  integrity sha1-81ypHEk/e3PaDgdJUwTxezH4fuU=
 
 magic-string@^0.22.4:
   version "0.22.5"
@@ -4827,9 +4917,10 @@ readable-stream@^2.0.2, readable-stream@^2.0.6, readable-stream@^2.2.2, readable
     string_decoder "~1.1.1"
     util-deprecate "~1.0.1"
 
-readable-stream@^3.1.1:
+readable-stream@^3.0.2, readable-stream@^3.1.1:
   version "3.4.0"
   resolved "https://registry.npm.taobao.org/readable-stream/download/readable-stream-3.4.0.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Freadable-stream%2Fdownload%2Freadable-stream-3.4.0.tgz#a51c26754658e0a3c21dbf59163bd45ba6f447fc"
+  integrity sha1-pRwmdUZY4KPCHb9ZFjvUW6b0R/w=
   dependencies:
     inherits "^2.0.3"
     string_decoder "^1.1.1"
@@ -5650,6 +5741,13 @@ type-check@~0.3.2:
   dependencies:
     prelude-ls "~1.1.2"
 
+typedarray-to-buffer@~3.1.5:
+  version "3.1.5"
+  resolved "https://registry.npm.taobao.org/typedarray-to-buffer/download/typedarray-to-buffer-3.1.5.tgz#a97ee7a9ff42691b9f783ff1bc5112fe3fca9080"
+  integrity sha1-qX7nqf9CaRufeD/xvFES/j/KkIA=
+  dependencies:
+    is-typedarray "^1.0.0"
+
 typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://registry.npm.taobao.org/typedarray/download/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
@@ -5965,9 +6063,10 @@ xml-name-validator@^3.0.0:
   version "3.0.0"
   resolved "https://registry.npm.taobao.org/xml-name-validator/download/xml-name-validator-3.0.0.tgz#6ae73e06de4d8c6e47f9fb181f78d648ad457c6a"
 
-xtend@^4.0.0, xtend@~4.0.1:
+xtend@^4.0.0, xtend@~4.0.0, xtend@~4.0.1:
   version "4.0.1"
   resolved "https://registry.npm.taobao.org/xtend/download/xtend-4.0.1.tgz#a5c6d532be656e23db820efb943a1f04998d63af"
+  integrity sha1-pcbVMr5lbiPbgg77lDofBJmNY68=
 
 yallist@^2.1.2:
   version "2.1.2"

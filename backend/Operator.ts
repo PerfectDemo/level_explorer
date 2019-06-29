@@ -28,7 +28,7 @@ class Operator implements IRemote {
         return localdb.getAllDb();
     }
 
-    async getDbInfo(name: string): Promise<DbInfo> {
+    async getDbInfo(name: string): Promise<DbInfo | undefined > {
         return localdb.getDbInfo(name);
     }
 

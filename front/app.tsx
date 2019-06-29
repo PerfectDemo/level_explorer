@@ -13,13 +13,6 @@ export default class Application extends React.Component {
         collapsed: false,
     };
 
-    componentDidMount() {
-        window.getAllDb().then(item => {
-            console.log('wryyyyyyyy');
-            console.log(item);
-        });
-    }
-
     onCollapse = (collapsed: boolean) => {
         console.log(collapsed);
         this.setState({ collapsed });
