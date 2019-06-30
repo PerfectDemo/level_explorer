@@ -10,4 +10,5 @@ export default interface IRemote {
     getAllDb: () => Promise<DbInfo[]>;
     open: (thepath: string) => Promise<void>;
     getDbInfo: (name: string) => Promise<DbInfo | undefined> ;
+    addDb: (name: string, location: string) => Promise<void>;
 }

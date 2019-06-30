@@ -32,6 +32,10 @@ class Operator implements IRemote {
         return localdb.getDbInfo(name);
     }
 
+    async addDb(name: string, location: string): Promise<void> {
+        return localdb.setDb(name, location);
+    }
+
     async open() {
 
     }

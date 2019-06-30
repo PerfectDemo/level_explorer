@@ -9,4 +9,8 @@ export default class TreeStore implements Tree {
         console.log(items);
         this.items = items;
     }
+
+    @action async addDb(name: string, location: string) {
+        await window.addDb(name, location);
+    }
 }

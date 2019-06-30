@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { Tree } from '../interface/tree';
 import { observer, inject } from 'mobx-react';
-import { Layout, Menu, Input, Select } from 'antd';
+import { Layout, Menu, Input, Select, Icon, Modal } from 'antd';
+import MyUpload from './MyUpload';
+
 
 const { Option } = Select;
 const { Sider } = Layout;
@@ -15,6 +17,20 @@ interface IProps {
 @inject('tree')
 @observer
 export default class Siderbar extends React.Component<IProps> {
+
+    state = {
+        modalVisible: true,
+        modalName: '',
+        modalPath: '',
+    }
+
+    showAndReset() {
+        this.setState({ modalName: '', modalPath: '', modalVisible: true });
+    }
+
+    uploadDir() {
+
+    }
 
     componentDidMount() {
         this.props.tree.fetchItems();
@@ -31,24 +47,36 @@ export default class Siderbar extends React.Component<IProps> {
         );
     }
 
+    async addDb() {
+        await this.props.tree.addDb(this.state.modalName, this.state.modalPath);
+        await this.props.tree.fetchItems();
+        this.setState({ modalVisible: false });
+    }
+
     render() {
         return (
-            <Sider style={{ width: 400, maxWidth: 400 }}>
+        <Sider style={{ width: 400, maxWidth: 400 }}>
             <Search
                 style={{ padding: 10 }}
                 placeholder=""
                 addonBefore={this.getDBnames()}
+                addonAfter={<Icon type="plus" onClick={() => this.showAndReset() }/>}
             />
-            <Menu theme="dark" defaultSelectedKeys={[ '1' ]} mode="inline">
+
+            <Menu theme="dark" mode="inline">
                 {
                     this.props.tree.items.map((item, i) => {
                         return (
                             <SubMenu
                                 key={i}
                                 title={
-                                    <span>{item.name}</span>
+                                    <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
+                                        <span>{item.name}</span>
+                                        <Icon type="delete" />
+                                    </div>
                                 }
                             >
+                               
                                 {
                                     item.keys ? item.keys.map((key, index) => {
                                         return (
@@ -61,6 +89,14 @@ export default class Siderbar extends React.Component<IProps> {
                     })
                 }
             </Menu>
+            <Modal title={"新增数据库"} visible={this.state.modalVisible} onOk={ () => this.addDb() }
+                onCancel={() => this.setState({ modalVisible: false }) }
+            >
+                <Input value={this.state.modalName} onChange={ (e) => this.setState({ modalName: e.target.value })} 
+                    placeholder={"名称"} style={{ marginBottom: '20px'}}/>
+                <Input value={this.state.modalPath} onChange={ (e) => this.setState({ modalPath: e.target.value })} 
+                    placeholder={"路径"} style={{ marginBottom: '20px'}}/>
+            </Modal>
         </Sider>
         );
     }
