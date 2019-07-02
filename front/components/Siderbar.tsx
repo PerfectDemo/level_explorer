@@ -32,8 +32,8 @@ export default class Siderbar extends React.Component<IProps> {
 
     }
 
-    componentDidMount() {
-        this.props.tree.fetchItems();
+    async componentDidMount() {
+        await this.props.tree.fetchItems();
     }
 
     getDBnames() {
@@ -51,6 +51,12 @@ export default class Siderbar extends React.Component<IProps> {
         await this.props.tree.addDb(this.state.modalName, this.state.modalPath);
         await this.props.tree.fetchItems();
         this.setState({ modalVisible: false });
+    }
+
+    async removeDb(name) {
+        console.log('name:', name);
+        await this.props.tree.removeDb(name);
+        await this.props.tree.fetchItems();
     }
 
     render() {
@@ -72,7 +78,7 @@ export default class Siderbar extends React.Component<IProps> {
                                 title={
                                     <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
                                         <span>{item.name}</span>
-                                        <Icon type="delete" />
+                                        <Icon type="delete" onClick={ () => this.removeDb(item.name) }/>
                                     </div>
                                 }
                             >

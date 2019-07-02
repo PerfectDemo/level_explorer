@@ -23,6 +23,10 @@ class Operator implements IRemote {
 
     }
 
+    async open(name: string) {
+        
+    }
+
     async getAllDb(): Promise<DbInfo[]> {
         console.log(this);
         return localdb.getAllDb();
@@ -36,10 +40,9 @@ class Operator implements IRemote {
         return localdb.setDb(name, location);
     }
 
-    async open() {
-
+    async removeDb(name: string) : Promise<void> {
+        return localdb.removeDb(name);
     }
-
     async getAllKey(): Promise<string[]> {
         return [];
     }

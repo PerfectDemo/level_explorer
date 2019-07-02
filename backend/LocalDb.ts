@@ -32,6 +32,10 @@ class LocalDb {
     setDb(name: string, location: string) {
         this.db.get('dbs').push({ name, location }).write();
     }
+
+    removeDb(name: string) {
+        return this.db.get('dbs').remove({ name }).write();
+    }
 }
 
 export default LocalDb;
