@@ -1,26 +1,24 @@
 import IRemote, { DbInfo } from '../common/remote';
 import LocalDb from './LocalDb';
+import LevelManager from './LevelManager';
 
 const localdb = new LocalDb();
+const levelManager = new LevelManager(); 
 
 class Operator implements IRemote {
 
     [key: string]: any;
 
-    public level = null;
-
-    constructor() {
-        this.level = null;
-      
-        console.log(233333);
+    async get(ipath: string, key: string) {
+        return await levelManager.get(ipath, key);
     }
 
-    async get(key: string) {
-        return "string" + key;
+    async set(ipath: string, key: string, value: string) {
+        return await levelManager.set(ipath, key, value);
     }
 
-    async set(key: string, value: string) {
-
+    async getAllKey(ipath: string): Promise<string[]> {
+        return await levelManager.getAllKey(ipath);
     }
 
     async open(name: string) {
@@ -43,9 +41,7 @@ class Operator implements IRemote {
     async removeDb(name: string) : Promise<void> {
         return localdb.removeDb(name);
     }
-    async getAllKey(): Promise<string[]> {
-        return [];
-    }
+   
 }
 
 export default new Operator();

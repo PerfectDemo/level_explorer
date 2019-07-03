@@ -18,7 +18,7 @@ class Application {
     }
 
     public registerFunctions(): void  {
-        [ "getAllDb", "get", "set", "open", "getDbInfo", "getAllKey", "addDb", "removeDb" ].forEach(key => {
+        [ "getAllDb", "get", "set", "getDbInfo", "getAllKey", "addDb", "removeDb" ].forEach(key => {
             this.app.exposeFunction(key, this.operator[key]);
         });
     }

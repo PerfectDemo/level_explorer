@@ -76,7 +76,9 @@ export default class Siderbar extends React.Component<IProps> {
                             <SubMenu
                                 key={i}
                                 title={
-                                    <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
+                                    <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}
+                                        onClick={ () => this.props.tree.getAllKey(item.location) }    
+                                    >
                                         <span>{item.name}</span>
                                         <Icon type="delete" onClick={ () => this.removeDb(item.name) }/>
                                     </div>
