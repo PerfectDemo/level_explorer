@@ -18,7 +18,10 @@ class Operator implements IRemote {
     }
 
     async getAllKey(ipath: string): Promise<string[]> {
-        return await levelManager.getAllKey(ipath);
+        console.log('location:', ipath);
+        const keys = await levelManager.getAllKey(ipath);
+        console.log('keys:', keys);
+        return keys;
     }
 
     async open(name: string) {

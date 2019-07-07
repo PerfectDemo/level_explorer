@@ -1,9 +1,8 @@
 import * as React from 'react';
 import { Tree } from '../interface/tree';
+import { Info } from '../interface/info';
 import { observer, inject } from 'mobx-react';
 import { Layout, Menu, Input, Select, Icon, Modal } from 'antd';
-import MyUpload from './MyUpload';
-
 
 const { Option } = Select;
 const { Sider } = Layout;
@@ -12,16 +11,17 @@ const Search = Input.Search;
 
 interface IProps {
     tree?: Tree;
+    info?: Info
 }
 
-@inject('tree')
+@inject('tree', 'info')
 @observer
 export default class Siderbar extends React.Component<IProps> {
 
     state = {
-        modalVisible: true,
+        modalVisible: false,
         modalName: '',
-        modalPath: '',
+        modalPath: ''
     }
 
     showAndReset() {
@@ -76,10 +76,12 @@ export default class Siderbar extends React.Component<IProps> {
                             <SubMenu
                                 key={i}
                                 title={
-                                    <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}
+                                    <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}
                                         onClick={ () => this.props.tree.getAllKey(item.location) }    
                                     >
-                                        <span>{item.name}</span>
+                                        <span>{item.name}</span> 
+                                        <div style={{ flex: 1}}></div>
+                                        <Icon type="plus" style={{ justifySelf: 'flex-end' }}onClick={() => this.props.info.goInit(item.location, item.name) } />
                                         <Icon type="delete" onClick={ () => this.removeDb(item.name) }/>
                                     </div>
                                 }
@@ -88,7 +90,11 @@ export default class Siderbar extends React.Component<IProps> {
                                 {
                                     item.keys ? item.keys.map((key, index) => {
                                         return (
-                                            <Menu.Item key={ i * 10 + index }>{key}</Menu.Item>
+                                            <Menu.Item key={ i * 10 + index } onClick={
+                                                () => this.props.info.goEdit({
+                                                    key, name: item.name, location: item.location
+                                                })
+                                            }>{key}</Menu.Item>
                                         );
                                     }) : null
                                 }

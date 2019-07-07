@@ -22,6 +22,7 @@ export default class LevelManager {
     }
 
     set(ipath: string, key: string, value: string) {
+        console.log("set:", arguments);
         const levelOp = this.getOps(ipath);
         return levelOp.set(key, value);
     }
@@ -42,18 +43,35 @@ class LevelOperator {
     }
 
     async get(key: string) {
-        return await this.db.get(key);
+        return await this.db.get(key, { asBuffer: false });
     }
 
     async set(key: string, value: string) {
         return await this.db.put(key, Buffer.from(value));
     }
 
-    getAllKey() {
+    async getAllKey() {
         const keys: string[] = [];
-        for (let iter of this.db.iterator()) {
-            keys.push(iter.key);
+        const iterator = this.db.iterator({ keyAsBuffer: false, valueAsBuffer: false });
+        
+        while (true) {
+            const key = await this.getKey(iterator);
+            if (!key) break;
+
+            keys.push(key);
         }
         return keys;
     }
+
+    async getKey(iter:any): Promise<string> {
+        return new Promise((resolve, reject) => {
+            iter.next((err: Error, key: string) => {
+                if (err) {
+                    reject(err);
+                }
+                resolve(key);
+            })
+        })
+    }
 }
+

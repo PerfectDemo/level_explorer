@@ -1,13 +1,14 @@
 import { Tree } from '../interface/tree';
-import { observable, action } from 'mobx';
+import { observable, action, runInAction } from 'mobx';
 
 export default class TreeStore implements Tree {
     @observable items = [];
 
     @action async fetchItems() {
         const items = await window.getAllDb();
-        this.items = items;
-        console.log(this.items);
+        runInAction(() => {
+            this.items = items;
+        });
     }
 
     @action async addDb(name: string, location: string) {
@@ -19,10 +20,11 @@ export default class TreeStore implements Tree {
     }
 
     @action async getAllKey(location: string) {
+        console.log('locatins: getALlKey', location);
         const keys = await window.getAllKey(location);
         for (let i = 0; i < this.items.length; i ++) {
             if (this.items[i].location === location) {
-                this.items[i].keys = keys;
+                runInAction(() => this.items[i].keys = keys);
             }
         }
     }
